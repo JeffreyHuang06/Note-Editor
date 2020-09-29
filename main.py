@@ -29,3 +29,11 @@ for ind,word in enumerate(tokens):
     iH.checkForHeader(ind, word)
 
 settings = iH.settings
+
+#SAVING AND WRITING THE DOCUMENT
+exportarg = sys.argv[3]
+
+if ".docx" in exportarg:
+    doc.save(f'{exportarg}')
+else:
+    doc.save(f'{exportarg}/{filearg[:-6]}docx')
