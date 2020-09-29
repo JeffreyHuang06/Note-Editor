@@ -1,8 +1,7 @@
-# pynote
-.pynote
-A note taking markup language, using the guide in Docs.pynote or in this readme.
-Use the python file in terminal to convert to word doc
-Reduces time having to fiddle with the buttons on Microsoft Word
+# pyNote
+A note taking markup language, using the guide in Docs.pynote or in this README  
+Use the python file in terminal to convert to word doc  
+Reduces time having to fiddle with the buttons on Microsoft Word  
 
 ## Setup
 Requires at least Python 3.8
