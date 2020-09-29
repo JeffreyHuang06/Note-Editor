@@ -1,0 +1,132 @@
+\header
+size=12
+v=hello
+h=18
+1\h=30
+t=14
+1\t=16
+r=12
+auto\l\=Jeffrey
+\end
+
+\h This is a header
+\t This is a topic
+\r = This is normal
+
+This is also a header \\h 
+this is also a one-word topic \\t=1
+
+I can store a variable \v=supercalifragilisitc
+\v \v \v \v 
+
+a\v=Aztec
+i\v=Inca
+
+a\v civ and i\v 
+
+if you want to declare a var without using it you can either use it in the header or like !\v=Nosee
+spaces in var names too \v\ hello
+
+any letter/name before a var declaration is its own
+
+You can also declare vars like \v={Aztec and Maya\n}
+wooo this is an entire variable \\v=
+line break vars are like \v=Aztec\n
+
+\q This is a quote, they do not close natually \
+\b This is bold, it closes naturally or through an \
+\b see i didnt put an escape !
+a lone escpae will confuse the interpreter and abort the conversion btw
+\i this is italicised
+i[this is very important]
+\l this is highlighted
+
+they can also be stacked! \\b \\q \\i \\l i[\\]
+
+if youre k-k-krazy you can do this i[
+
+    hellot
+    this spans multiple paragraphs
+
+    \q this is a interpreter warning howefver \
+    if you removed that backslash it wouldve caused an abort
+]
+
+this is a quote \\q 
+this is half bold \\b=2
+this is quoted \\q and this is \b partly bold
+
+\t I can change the topic size \t=25 mid sentence
+t\t=5 this is only temporary
+\t heyooo
+
+\bull
+    This is one way of bulleting
+    this is another bullet
+    \
+
+\bull
+    it can be ended like this too \
+
+\bull 
+\p hii
+\p hii 
+hi \\p
+\p a slash edns this btw
+\
+
+\bull-
+- this is the third option
+- quite fun
+--this is even coooooler
+\-*3 wooooooooooooo this is triggered by escaping then multiplying
+\
+\d 1986-16
+this can be inferred ^
+
+\d 1918-36
+if you wanted to say \d 1918 - 2036 you ahve to specify 
+the thing will look for dates and it can fit most whitespace to accomodate but if it gets janky it will i[abort]
+
+\ind this is an indent if you dont want to tab
+    you can indent too noramlly also
+
+\plain{{
+
+    this is all plain text,
+    however be carefull
+    not to use the double } } 
+    you can write \a and \v=5 no problem
+    if you just want a regular word doc 
+
+    if however you need like one simple thing you can do \esc{{\h hello}}
+}}
+
+new features will be added, like margin specify and fonts
+
+\plain{{
+
+    nost of these commands you wont be using but i want a lot of functionality
+    in the \header you see auto\l=Jeffrey
+    means every time you see jeffrey it auto highlights
+    auto\l={Jeffrey huang} also works but autos can only be declared in header 
+
+    btw a --plain flag will be added so you can plainify any pynote you want cuz idk im bored
+}}
+
+you can also rewtie commands
+\h\=\t 
+\h this is topic size 
+t\t=5 this is a header! \\h 
+\h=18
+you can temp something like this t\h\=\t\b \h this is kewl
+
+urg this is gonna be hard to script all these rules
+idk if im gonna use regex or like word for word sentence by sentence or i can just feed this to c++ for a more digestable format
+then i cna just spew that into a new py interpreter 
+
+\h These are all teh features for now
+good bye!
+reading from word to word will also be adde to taks list
+
+By Jeffrey
