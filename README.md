@@ -190,19 +190,20 @@ hi
 hello
 \\tab
 \\tab
+\  
+```
 
-\
-```
-<br>
 You can also remove the space, but this is called Indeterminate-Bullets, which can be toggled in the heading
-```
+<br>  
+
+``` 
+
 \bull
 -HI
 -hi
 -these dont have spaces
-
 - but this does
-\
+\  
 ```
 
 ### Special Keywords
