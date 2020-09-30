@@ -2,16 +2,14 @@
 size=12
 v=hello
 h=18
-1\h=30
 t=14
-1\t=16
 r=12
-auto\l\=Jeffrey
+l\auto=Jeffrey
 \end
 
 \h This is a header
 \t This is a topic
-\r = This is normal
+\r = This is normal \\r
 
 This is also a header \\h 
 this is also a one-word topic \\t=1
@@ -41,7 +39,7 @@ a lone escpae will confuse the interpreter and abort the conversion btw
 i[this is very important]
 \l this is highlighted
 
-they can also be stacked! \\b \\q \\i \\l i[\\]
+they can also be stacked! \\b \\q \\i \\l \\i[]
 
 if youre k-k-krazy you can do this i[
 
