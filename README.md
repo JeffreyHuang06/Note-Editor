@@ -310,13 +310,16 @@ The Header is one of the most important parts of a pyNote.
 Although optional, which if you don't include it, it goes to the default config  
 In the Header, it can rewrite rules and sizes
 It is denoted by
+
 ```
 \header
 \end
 ```
+
 <br>
 In the header, you don't need backslashes
 An example is
+
 ```
 \header
 h=12
@@ -324,8 +327,12 @@ t=5
 r=3
 size=2
 v={\b \t}
+Indeterminate-Quote=False
+Indeterminate-Bullet=False
+Inline-Style=False
 \end
 ```
+
 The size parameter is Header specific, you cannot declare it outside the Header
 You can also observe that you can't declare subtypes, but you can declare them in the config JSON
 
