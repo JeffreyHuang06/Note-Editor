@@ -10,7 +10,7 @@ doc = Document()
 #Get the selected pynote file
 filearg = sys.argv[1]
 
-with open(filearg) as f:
+with open(filearg,"r") as f:
     textread = f.read()
 tokens = textread.split()
 
@@ -18,7 +18,7 @@ tokens = textread.split()
 defaultarg = sys.argv[2]
 
 if defaultarg == 'd': defaultarg = './configs/default.json'
-with open(defaultarg) as jsn:
+with open(defaultarg,"r") as jsn:
     settings = json.load(jsn)
 
 #Read Header

@@ -9,9 +9,12 @@
         "" : 12
     },
     "v" : {
-        "" : "5"
+        "" : ""
     },
     "size" : {
         "" : 12
-    }
+    },
+    "Indeterminate-Quote" : "False",
+    "Indeterminate-Bullet" : "False",
+    "Inline-Style" : "False"
 }

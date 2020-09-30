@@ -1,3 +1,5 @@
+import sys
+
 settings = 0
 def init(settingjson : dict):
     global settings
@@ -7,8 +9,11 @@ def init(settingjson : dict):
 headerMode = False
 foundHeader = False
 
+digits = [i for i in range(10)]
+
 def checkForHeader(ind : int, word : str):
     global headerMode, foundHeader
+    global digits
 
     #Check for \header
     if ind == 0 and word == r'\header':
@@ -23,16 +28,30 @@ def checkForHeader(ind : int, word : str):
 
     #In Headermode currently
     elif headerMode == True:
+
+        word_tokens = word.split('=', 1)
+        tag = word_tokens[0]
+
         #Check if it had keyword
         if '\\' in word:
-            pass
+            #error checking
+
+            if word[0] == '\\': exit(f"Line {ind+1}: Intial backslashes not allowed in Header Declaration")
+                        #checking if there is a subtype
+            for char in tag:
+                if char in digits: exit(f"Line {ind+1}: Subtyping not allowed in Header Declaration")
         
         #Normal declaration
         else:
-            word_tokens = word.split('=', 1)
-            tag = word_tokens[0]
 
+            #variable declaration
             if tag == 'v':
                 settings[tag][""] = word_tokens[1]
+
+            #global rules
+            elif '-' in tag:
+                settings[tag] = word_tokens[1]
+            
+            #size rules
             else:
                 settings[tag][""] = int(word_tokens[1])
