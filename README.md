@@ -12,29 +12,35 @@ pip install -r requirements.txt
 ## Covert to .docx
 ### MacOS
 ```bash
-python3 main.py [filename] [config json] [exportpath]
+python3 main.py [input file]
 ```
 Examples:
 ```bash
 python3 main.py historynotes.pynote d
-python3 main.py historynotes.pynote myPersonalConfig.json
-python3 main.py historyntes.pynote myPersonalConfig.json .
-python3 main.py historynotes.pynote myOtherConfig.json notes.docx
+python3 main.py historynotes.pynote --json myPersonalConfig.json
+python3 main.py historynotes.pynote --json myOtherConfig.json --output notes.docx
 ```
-The default configuration JSON is in ./configs/default.json where you can jsut specify the path with "d"
+<br>
+For more information on the command line arguments, do
+```bash
+python3 main.py --help
+```
 
 ### Windows
 ```bash
-python main.py [filename] [config json] [exportpath]
+python main.py [input file]
 ```
 Examples:
 ```bash
 python main.py historynotes.pynote d
-python main.py historynotes.pynote myPersonalConfig.json
-python main.py historyntes.pynote myPersonalConfig.json .
-python main.py historynotes.pynote myOtherConfig.json notes.docx
+python main.py historynotes.pynote --json myPersonalConfig.json
+python main.py historynotes.pynote --json myOtherConfig.json --output notes.docx
 ```
-The default configuration JSON is in ./configs/default.json where you can jsut specify the path with "d"
+<br>
+For more information on the command line arguments, do
+```bash
+python main.py --help
+```
 
 ## Documentation
 ### Size Markers
