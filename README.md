@@ -217,7 +217,7 @@ There are special key words that can als be used.
 #### Auto
 This automaticlaly applies the size or style to any text.
 ```
-\t=5\auto\Hi
+\t=5\auto=Hi
 ```
 It can be declared in a heading
 
