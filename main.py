@@ -10,9 +10,9 @@ doc = Document()
 
 #Argument parser
 parser = argparse.ArgumentParser()
-parser.add_argument("input", type=str, help="Input file, needs to have .pynote extension")
-parser.add_argument("-o", "--output", type=str, help="Output file, needs to have .docx extension")
-parser.add_argument("-j", "--json", type=str, default="./configs/default.json", help="Settings JSON, default is ./configs/default.json")
+parser.add_argument("input", type=str, metavar='ifile', help="input file, needs to have .pynote extension")
+parser.add_argument("-o", "--output", type=str, metavar='ofile', help="output file, needs to have .docx extension")
+parser.add_argument("-j", "--json", type=str, metavar='JSON', default="./configs/default.json", help="header JSON, default is ./configs/default.json")
 
 args = parser.parse_args()
 
