@@ -1,4 +1,5 @@
-import sys, os, json
+import sys, os, json, argparse
+
 from docx import Document
 from docx.shared import Inches
 
@@ -7,19 +8,27 @@ from interpreters import interBody as iB
 
 doc = Document()
 
-#Get the selected pynote file
-filearg = sys.argv[1]
+#Argument parser
+parser = argparse.ArgumentParser()
+parser.add_argument("input", type=str, help="Input file, needs to have .pynote extension")
+parser.add_argument("-o", "--output", type=str, help="Output file, needs to have .docx extension")
+parser.add_argument("-j", "--json", type=str, default="./configs/default.json", help="Settings JSON, default is ./configs/default.json")
 
-with open(filearg,"r") as f:
+args = parser.parse_args()
+
+#Get the selected pynote file
+if ".pynote" not in (ifile := args.input):
+    exit("Error: Input file must have .pynote extension")
+
+with open(args.input, "r") as f:
     textread = f.read()
 tokens = textread.split()
 
 #JSON Settings
-defaultarg = sys.argv[2]
-
-if defaultarg == 'd': defaultarg = './configs/default.json'
-with open(defaultarg,"r") as jsn:
+with open(args.json, "r") as jsn:
     settings = json.load(jsn)
+
+#I should have cmd line arg to add to another word doc
 
 #Read Header
 iH.init(settings)
@@ -31,9 +40,12 @@ for ind,word in enumerate(tokens):
 settings = iH.settings
 
 #SAVING AND WRITING THE DOCUMENT
-exportarg = sys.argv[3]
+if (ofile := args.output) == None:
+    doc.save(f'./{ofile[:-6]}docx')
 
-if ".docx" in exportarg:
-    doc.save(f'{exportarg}')
 else:
-    doc.save(f'{exportarg}/{filearg[:-6]}docx')
+    if ".docx" in ofile:
+        doc.save(f'{ofile}')
+    else:
+        exit("Error: Output file must have .docx extension")
+
