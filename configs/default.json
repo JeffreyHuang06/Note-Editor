@@ -14,6 +14,11 @@
     "size" : {
         "" : 12
     },
+    "keywords" : {
+        "auto" : {
+            
+        }
+    },
     "Indeterminate-Quote" : "False",
     "Indeterminate-Bullet" : "False",
     "Inline-Style" : "False"

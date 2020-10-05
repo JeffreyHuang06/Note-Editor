@@ -4,5 +4,5 @@ def init(settingjson : dict):
     global settings
     settings = settingjson
 
-def parse(ind : int, word : str):
+def parseLine(ind : int, line : str):
     pass

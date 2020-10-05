@@ -48,7 +48,7 @@ dbg.c_settings(settings) #DEBUGTOOLS
 
 for ind, line in enumerate(tokens):
     if iH.headerMode == False and iH.foundHeader == True: break
-    iH.checkForHeader(ind, line[:-1])
+    iH.checkForHeader(ind, line[:-1]) #removes the endl
 
 settings = iH.settings
 
@@ -63,6 +63,9 @@ if tokens[0] == '\end':
 
 #Interpret the body
 iB.init(settings)
+
+for ind, line in enumerate(tokens):
+    iB.parseLine(ind, line)
 
 #SAVING AND WRITING THE DOCUMENT
 dbg.c_void() #DEBUGTOOLS
