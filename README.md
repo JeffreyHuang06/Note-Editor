@@ -5,6 +5,12 @@ Reduces time having to fiddle with the buttons on Microsoft Word
 
 ## Setup
 Requires at least Python 3.8
+### MacOS
+```bash
+pip3 install -r requirements.txt
+```
+
+# Windows
 ```bash
 pip install -r requirements.txt
 ```
@@ -22,6 +28,7 @@ python3 main.py historynotes.pynote --json myOtherConfig.json --output notes.doc
 ```
 <br>
 For more information on the command line arguments, do
+
 ```bash
 python3 main.py --help
 ```
@@ -38,6 +45,7 @@ python main.py historynotes.pynote --json myOtherConfig.json --output notes.docx
 ```
 <br>
 For more information on the command line arguments, do
+
 ```bash
 python main.py --help
 ```
@@ -49,23 +57,28 @@ python main.py --help
 ##### `\r` - Regular Chunk  
 <br>
 Size markers can also be extended to different numerical subtypes
+
 ##### `4\h` - Heading - Type 4
 ##### `2\t` - Topic - Type 2
 ##### `1\r` - Regular Chunk - Type 1
 <br>
 These, however will lead to an error
+
 ##### `0\h` - Only positive integer subtypes
 ##### `a\t` - Can only be numerical
 <br>
 You can assign the font size inline when using a Size Marker
+
 ##### `\h=28` - Heading - Size 28
 ##### `4\t=15` - Topic - Type 4 - Size 15
 ##### `1\r=11` - Regular Chunk - Type 1 - Size 11
 
 #### Notes:
 The Regular Chunk does not self close, it has to be represented like
+
 ##### ```\r Text \\r```
 and likewise with the subtypes
+
 ##### ```4\r=12 Text 4\\r``` - Regular Chunk - Type 4 - Size 12
 
 ### Styles
@@ -75,15 +88,19 @@ and likewise with the subtypes
 ##### `\l` - Highlights
 <br>
 These close like Size Markers
-##### `\b Text \\b`
+
+##### ```\b Text \\b```
 <br>
 There is another Style which doesn't behave the exact same way
+
 ##### `i[]` - Emphasis
 Which can be used like
+
 ##### `i[Text]` - "Text" is emphasized
 You can program Emphasis in the Header
 <br>
 All 5 Styles can be nested
+
 ##### ```\q \b \i Lorem \\i Ipsum \l Dolor \\l i[\b sit \\b] \q amet``` 
 
 #### Notes:
@@ -94,7 +111,7 @@ Something like this will work
 "Hello \q
 \q Hello"
 ```
-This mixing and matching is called Intederminate-Quote
+This mixing and matching is called Indeterminate-Quote
 
 ### Advanced Size Markers and Styles
 To make an entire singular line a style or size, you can just put an ending without the beginning
@@ -123,6 +140,7 @@ The word \v has been pasted 4 times
 ```
 <br>
 Variables can also be subtyped
+
 ```
 1\v=Hi
 a\v=Aztec
@@ -130,6 +148,7 @@ a\v=Aztec
 ```
 <br>
 Spaces exist via braces or underscores
+
 ```
 \v={The Aztecs}
 \v
@@ -139,12 +158,14 @@ Spaces exist via braces or underscores
 ```
 <br>
 Whole lines can be declared with a double backslash variable declaration
+
 ```
 This is all a var \\v=
 i can paste it here : \v
 ```
 <br>
 A powerful functionality is that they can store whole styles and sizes
+
 ```
 1\v={\b \t}
 2\v=\\b
@@ -203,7 +224,6 @@ You can also remove the space, but this is called Indeterminate-Bullets, which c
 <br>  
 
 ``` 
-
 \bull
 -HI
 -hi
@@ -215,7 +235,7 @@ You can also remove the space, but this is called Indeterminate-Bullets, which c
 ### Special Keywords
 There are special key words that can als be used.
 #### Auto
-This automaticlaly applies the size or style to any text.
+This automatically applies the size or style to any text.
 ```
 \t=5\auto=Hi
 ```
@@ -254,6 +274,7 @@ No tags will be registered in here, unless you use the esc tag
 ```
 <br>
 If you want to make an entire section a style and size, you can use the div tag
+
 ```
 \div \h=5 \l 
     All 
