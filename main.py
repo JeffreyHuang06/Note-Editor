@@ -41,6 +41,7 @@ with open(args.json, "r") as jsn:
 #DEBUGTOOLS
 dbg.init(args)
 
+
 #Read Header
 iH.init(settings)
 
@@ -54,18 +55,26 @@ settings = iH.settings
 
 dbg.c_settings(settings) #DEBUGTOOLS
 
+
+
 # Strip the header declarations from the lines
 tokens = tokens[ind:]
+
+
 
 #Check to make sure there's more than a header
 if tokens[0] == '\end':
     exit("Error: No body present")
 
+
+
 #Interpret the body
-iB.init(settings)
+iB.init(settings, doc)
 
 for ind, line in enumerate(tokens):
     iB.parseLine(ind, line)
+
+
 
 #SAVING AND WRITING THE DOCUMENT
 dbg.c_void() #DEBUGTOOLS
@@ -78,5 +87,3 @@ else:
         doc.save(f'{ofile}')
     else:
         exit("Error: Output file must have .docx extension")
-
-print('\n')
