@@ -1,6 +1,7 @@
 from docx.shared import Pt
+import typing
 
-settings = 0
+settings = dict()
 document = 0
 
 is_h = False
@@ -19,22 +20,17 @@ def init(settingjson : dict, doc):
 
     #create the bool settgins possibly
     
-
-
-def parseLine(lineind : int, line : str):
-    #feed the thing char by char in order to make whitespace
-    #make a first run to get all the tags, then find them, then add the sentences
+def split_line(line: str) -> typing.List[str]:
     tokens = line.split()
-    tokeninds = []
     lenline = len(line)
-    #i could use regex... but i wont
 
     #find all tags
     tags = [i for i in tokens if '\\' in i]
     taginds = []
     startind = 0
     for tag in tags:
-        ind = line.find(tag, startind, lenline) # get the inds and lengths of all the tags
+        # get the inds and lengths of all the tags
+        ind = line.find(tag, startind, lenline)
         taginds.append(
             (ind, ind + len(tag))
         )
@@ -59,6 +55,12 @@ def parseLine(lineind : int, line : str):
     splines = []
     for inds in sepinds:
         splines.append(
-            line[inds[0] : inds[1]]
+            line[inds[0]: inds[1]]
         )
     
+    return splines
+
+
+def parseLine(lineind : int, line : str):
+    # get the splitted line
+    splines = split_line(line)
