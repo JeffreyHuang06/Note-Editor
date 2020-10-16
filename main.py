@@ -28,8 +28,13 @@ debugParser.add_argument("-v", '--void', action='store_true', default=False, hel
 args = parser.parse_args()
 
 #Get the selected pynote file
-if ".pynote" not in (ifile := args.input):
-    exit("Error: Input file must have .pynote extension")
+if ".txt" in (ifile := args.input):
+    import txtdocx.main #transfer the control flow
+
+elif ".pynote" in ifile:
+    pass
+else:
+    exit("Error: Input file must have .pynote or .txt extension")
 
 with open(args.input,"r") as fin:
     tokens = fin.readlines()
