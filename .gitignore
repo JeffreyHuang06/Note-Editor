@@ -2,3 +2,7 @@
 __pycache__/
 **/pycache__/
 .idea/*
+*.docx
+.mypy_cache/*
+*.txt
+*/*.txt

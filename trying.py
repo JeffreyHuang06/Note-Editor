@@ -1,7 +1,11 @@
-import argparse
-parser = argparse.ArgumentParser()
-parser.add_argument("input", type=str)
-parser.add_argument("-o", "--output", type=str)
+from docx import Document
+from docx.shared import Inches
 
-args = parser.parse_args()
-print(args)
+doc = Document()
+r1 = doc.add_paragraph("hello")
+run = r1.add_run("hi")
+run.bold = True
+f = run.font
+f.highlight_color = 7
+
+doc.save("test.docx")

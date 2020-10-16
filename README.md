@@ -25,6 +25,9 @@ Examples:
 python3 main.py historynotes.pynote d
 python3 main.py historynotes.pynote --json myPersonalConfig.json
 python3 main.py historynotes.pynote --json myOtherConfig.json --output notes.docx
+
+python3 main.py historynotes.txt
+python3 main.py mynotes.txt -o primary.docx
 ```
 <br>
 For more information on the command line arguments, do
@@ -42,6 +45,9 @@ Examples:
 python main.py historynotes.pynote d
 python main.py historynotes.pynote --json myPersonalConfig.json
 python main.py historynotes.pynote --json myOtherConfig.json --output notes.docx
+
+python main.py historynotes.txt
+python main.py mynotes.txt -o primary.docx
 ```
 <br>
 For more information on the command line arguments, do
