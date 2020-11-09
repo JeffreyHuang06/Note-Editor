@@ -39,7 +39,7 @@ def checkForHeader(ind : int, token : str):
 
             #checking if there is a subtype
             if len(re.findall("[0-9]", tag)):
-                if char in digits: exit(f"Line {ind+1}: Subtyping not allowed in Header Declaration")
+                exit(f"Line {ind+1}: Subtyping not allowed in Header Declaration")
 
             subtags = tag.split('\\')
             maintag = subtags.pop(0)
