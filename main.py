@@ -60,12 +60,8 @@ settings = iH.settings
 
 dbg.c_settings(settings) #DEBUGTOOLS
 
-
-
-# Strip the header declarations from the lines
+# Crop list so that i removes the header declarations
 tokens = tokens[ind:]
-
-
 
 #Check to make sure there's more than a header
 if tokens[0] == '\end':
