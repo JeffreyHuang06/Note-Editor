@@ -256,7 +256,7 @@ For the Size Markers, you can put a tilde before them to make them only last for
 But this is size 6
 ```
 ```
-~\b This is only bold for this line
+\\b This is only bold for this line
 1\t=2 This is size 1
 ~1\t=15 But this is size 15
 1\t Although this is back to normal
