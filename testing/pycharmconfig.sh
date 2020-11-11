@@ -1,0 +1,1 @@
+python main.py testing/text.pynote -v
