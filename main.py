@@ -6,29 +6,15 @@ from docx.shared import Inches
 from interpreters import interHeader as iH
 from interpreters import interBody as iB
 
+from src.args import _args
+from src.settings import _settings
+
 from utils import debugtools as dbg
 
 doc = Document()
 
-#Argument parser
-parser = argparse.ArgumentParser()
-
-fileParser = parser.add_argument_group("File Specifiers")
-fileParser.add_argument("input", type=str, metavar='ifile', help="input file, needs to have .pynote extension")
-fileParser.add_argument("-o", "--output", type=str, metavar='ofile', help="output file, needs to have .docx extension")
-fileParser.add_argument("-j", "--json", type=str, metavar='JSON', default="./configs/default.json", help="header JSON, default is ./configs/default.json")
-
-debugParser = parser.add_argument_group("Debug Tools")
-debugParser.add_argument("-s", "--settings", action='store_true', default=False, help="prints out the settings after processing the header")
-debugParser.add_argument("-c", "--config", action='store_true', default=False, help="prints out the config json specified")
-debugParser.add_argument("-v", '--void', action='store_true', default=False, help="doesn't create or edit the file")
-
-# fargs = fileParser.parse_args()
-# dargs = debugParser.parse_args()
-args = parser.parse_args()
-
 #Get the selected pynote file
-if ".txt" in (ifile := args.input):
+if ".txt" in (ifile := _args.input):
     import txtdocx.main #transfer the control flow
 
 elif ".pynote" in ifile:
@@ -36,29 +22,19 @@ elif ".pynote" in ifile:
 else:
     exit("Error: Input file must have .pynote or .txt extension")
 
-with open(args.input,"r") as fin:
+with open(_args.input, "r") as fin:
     tokens = fin.readlines()
 
-#JSON Settings
-with open(args.json, "r") as jsn:
-    settings = json.load(jsn)
-
-#DEBUGTOOLS
-dbg.init(args)
-
-
 #Read Header
-iH.init(settings)
+iH.init()
 
-dbg.c_settings(settings) #DEBUGTOOLS
+dbg.c_settings() #DEBUGTOOLS
 
 for ind, line in enumerate(tokens):
     if iH.headerMode == False and iH.foundHeader == True: break
     iH.checkForHeader(ind, line[:-1]) #removes the endl
 
-settings = iH.settings
-
-dbg.c_settings(settings) #DEBUGTOOLS
+dbg.c_settings() #DEBUGTOOLS
 
 # Crop list so that i removes the header declarations
 tokens = tokens[ind:]
@@ -70,17 +46,16 @@ if tokens[0] == '\end':
 
 
 #Interpret the body
-iB.init(settings, doc)
+iB.init(doc)
 
 for ind, line in enumerate(tokens):
     iB.parseLine(ind, line)
 
 
-
 #SAVING AND WRITING THE DOCUMENT
 dbg.c_void() #DEBUGTOOLS
 
-if (ofile := args.output) == None:
+if (ofile := _args.output) is None:
     doc.save(f'./{ofile[:-6]}docx')
 
 else:

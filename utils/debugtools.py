@@ -1,24 +1,21 @@
-args = 0
+from src.args import _args
+from src.settings import _settings
 
-def init(argjson : dict()):
-    global args 
-    args = argjson
-
-def c_settings(settjson : dict()):
-    if args.settings:
+def c_settings():
+    if _args.settings:
         print("\nHeader Evaluated Settings")
 
-        for i in settjson.keys():
-            print(f'{i}: {settjson[i]}')
+        for i in _settings.keys():
+            print(f'{i}: {_settings[i]}')
 
 def c_void():
-    if args.void:
+    if _args.void:
         print('\n')
         exit()
 
-def c_config(settjson : dict()):
-    if args.settings:
+def c_config():
+    if _args.settings:
         print("\nConfig JSON Settings:")
 
-        for i in settjson.keys():
-            print(f'{i}: {settjson[i]}')
+        for i in _settings.keys():
+            print(f'{i}: {_settings[i]}')

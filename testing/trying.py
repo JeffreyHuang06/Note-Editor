@@ -18,11 +18,19 @@
 # t2.test(x)
 # print(x)
 
-import builtins
+# import builtins
+#
+# def mt():
+#     print("hello world")
+#
+# builtins.mytest = mt
+#
+# mytest()
 
-def mt():
-    print("hello world")
+from t3 import x
 
-builtins.mytest = mt
+x.append(5)
 
-mytest()
+import t2
+
+print(x)

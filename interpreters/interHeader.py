@@ -1,16 +1,17 @@
 import sys
 import re
 
-settings = 0
-def init(settingjson : dict):
-    global settings
-    settings = settingjson
+_settings = dict()
+
+def init():
+    global _settings
+
+    from src.settings import _settings as settings
+    _settings = settings
 
 #INTERPRETTING THE HEADING
 headerMode = False
 foundHeader = False
-
-digits = [i for i in range(10)]
 
 def checkForHeader(ind : int, token : str):
     global headerMode, foundHeader
@@ -45,19 +46,19 @@ def checkForHeader(ind : int, token : str):
             maintag = subtags.pop(0)
             keyword = subtags[0] # might change later if keywords get more complex
 
-            settings["keywords"][keyword].update({word_tokens[1] : maintag}) # will need to be changed in order to expand this, like adding another level for multiple formats and also linking it to vars
+            _settings["keywords"][keyword].update({word_tokens[1] : maintag}) # will need to be changed in order to expand this, like adding another level for multiple formats and also linking it to vars
         
         #Normal declaration
         else:
 
             #variable declaration
             if tag == 'v':
-                settings[tag][""] = word_tokens[1]
+                _settings[tag][""] = word_tokens[1]
 
             #global rules
             elif '-' in tag:
-                settings[tag] = word_tokens[1]
+                _settings[tag] = word_tokens[1]
             
             #size rules
             else:
-                settings[tag][""] = int(word_tokens[1])
+                _settings[tag][""] = int(word_tokens[1])

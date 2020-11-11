@@ -1,2 +1,4 @@
-def test(y):
-    y[0] = 6
+from t3 import x
+
+print(x)
+x.append(89)
