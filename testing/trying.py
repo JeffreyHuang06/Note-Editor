@@ -12,8 +12,17 @@
 # import os
 # print(os.path.dirname(os.path.realpath(__file__)))
 
-import t2 
+# import t2
+#
+# x=  [5]
+# t2.test(x)
+# print(x)
 
-x=  [5]
-t2.test(x)
-print(x)
+import builtins
+
+def mt():
+    print("hello world")
+
+builtins.mytest = mt
+
+mytest()
