@@ -1,37 +1,22 @@
 from docx.shared import Pt
 import typing
 import re
-from tagparsers import initer
+
 from tagparsers import wh_sp_parser
+from tagparsers import var_parser
 from tagparsers.class_parsetag import ParsedTag
+
+from src.isdict import _is
 
 _settings = dict()
 document = 0
 
-_is = {
-    "is_h": False,
-    "is_t": False,
-    "is_r": False,
-    "is_l": False,
-    "is_b": False,
-    "is_i": False,
-    "is_emph": False,
-    "is_plain": False,
-    "is_ind": False,
-    "is_bull" : False
-}
-
-
 def init(doc):
     global _settings, document
-    # global is_h, is_t, is_r, is_l, is_b, is_r, is_i, is_emph, is_plain
-    global _is
 
     from src.settings import _settings as settings
     _settings = settings
     document = doc
-
-    # initer.init(settings)
 
     # create the bool settgins possibly
 
@@ -104,12 +89,14 @@ def parse_tag(tag: str) -> ParsedTag:
 
         re_wh_sp = re.findall("bull|plain|div|ind", tag)
         re_var = re.findall("\\\\v=", tag)  # returns type: list
-        re_style = re.findall("\\\\[bli]|^\\[", tag)
+        re_style = re.findall("\\\\[bli]|^\\\\\\[", tag) #this regex is despicable
         re_size = re.findall("\\\\[htr]", tag)
 
         if len(re_wh_sp):  # it will only accept inds now
             return wh_sp_parser.parse_wh_sp(tag)
 
+        elif len(re_var):
+            return var_parser.parse_var(tag)
     else:
         ...
 
@@ -119,8 +106,6 @@ def parseLine(lineind: int, line: str):
     splines = split_line(line)  # each "token" for the parser to parse
     docxline = document.add_paragraph("")  # make a new line to add
 
-    # print(_settings)
-    # loop through everything
     for ind, token in enumerate(splines):
         parse_tag(token)
 

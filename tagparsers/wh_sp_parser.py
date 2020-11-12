@@ -13,9 +13,9 @@ def parse_wh_sp(tag : str) -> ParsedTag:
 
     elif len(re.findall("\\\\plain", tag)): #plain
 
-        if tag == "\\plain":
+        if tag == "\\plain{":
             return ParsedTag("invtag", 1, {"is_plain": True})
-        elif tag == "\\\\plain":
+        elif tag == "\\\\plain{":
             return ParsedTag("invtag", 1, {"is_plain": False})
 
         #oh god coding in all the special behaviours is gonna fucking succcccccccc
