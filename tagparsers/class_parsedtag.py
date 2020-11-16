@@ -3,16 +3,18 @@ class ParsedTag:
     """
     args format
 
-    1.
+    invtag -
         length of tag rules
         tag rules
 
-    2.
+    tag -
         length of tag rules
         tag rules
         text
 
-    3. text
+    text -
+        text
+
     """
 
     def __init__(self, ptype: str, *args):

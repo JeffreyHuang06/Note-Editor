@@ -1,7 +1,16 @@
 import re
-from tagparsers.class_parsetag import ParsedTag
+from tagparsers.class_parsedtag import ParsedTag
 
 def parse_wh_sp(tag : str) -> ParsedTag:
+
+    """
+    hierarchy
+
+    bullet
+    plain
+    div
+    ind
+    """
     
     if len(re.findall("\\\\bull", tag)): #bullet
 
@@ -24,7 +33,7 @@ def parse_wh_sp(tag : str) -> ParsedTag:
 
         #urgg fuck im gonna have to make a style cache fucking shit goddammit
 
-        # NOT YET IPLEMENTED
+        # NOT YET IMPLEMENTED
         return ParsedTag("invtag", 0)
     
     elif len(re.findall("\\\\ind", tag)): #ind

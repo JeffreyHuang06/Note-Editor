@@ -4,7 +4,7 @@ import re
 
 from tagparsers import wh_sp_parser
 from tagparsers import var_parser
-from tagparsers.class_parsetag import ParsedTag
+from tagparsers.class_parsedtag import ParsedTag
 
 from src.isdict import _is
 
