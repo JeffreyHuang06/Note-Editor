@@ -28,7 +28,7 @@ with open(_args.input, "r") as fin:
 #Read Header
 iH.init()
 
-dbg.c_settings() #DEBUGTOOLS
+dbg.c_config() #DEBUGTOOLS
 
 for ind, line in enumerate(tokens):
     if iH.headerMode == False and iH.foundHeader == True: break
