@@ -62,7 +62,7 @@ def split_line(line: str) -> typing.List[str]:
     return splines
 
 
-def parse_tag(tag: str) -> ParsedTag:
+def parse_tag(tag: str):
 
     """
         this will return text, or it will return a rule change, in the form of a tuple
@@ -97,6 +97,7 @@ def parse_tag(tag: str) -> ParsedTag:
 
         elif len(re_var):
             return var_parser.parse_var(tag)
+            
     else:
         ...
 
@@ -107,6 +108,8 @@ def parseLine(lineind: int, line: str):
     docxline = document.add_paragraph("")  # make a new line to add
 
     for ind, token in enumerate(splines):
-        parse_tag(token)
+        res = parse_tag(token)
 
         # __ __ dunders are special
+        
+
