@@ -26,5 +26,5 @@ def parse_var(tag: str) -> ParsedVar:
     # i need to determine the assignemed
 
     # i need to separate at the equals
-    notassigned, assigned = tag.split("=")
+    print(tag)
     
